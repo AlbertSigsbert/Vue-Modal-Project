@@ -1,5 +1,7 @@
 <template>
 <h1>{{ title }}</h1>
+<input type="text" ref="name">
+<button @click="handleClick">Click Me</button>
 </template>
 
 <script>
@@ -10,6 +12,11 @@ export default {
   data(){
     return{
       title:"Hello Vue"
+    }
+  },
+  methods:{
+    handleClick(){
+      this.$refs.name.focus()
     }
   }
 }
