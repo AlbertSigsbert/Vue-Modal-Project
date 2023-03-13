@@ -1,15 +1,17 @@
 <template>
     <div class="backdrop" @click.self="closeModal">
         <div class="modal" :class="{ sale: theme === 'sale' }">
-            <h1>{{ header }}</h1>
-            <p>{{ text }}</p>
+            <slot></slot>
+            <div class="actions">
+                <slot name="links"></slot>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    props: ['header', 'text', 'theme'],
+    props: ['theme'],
     methods: {
         closeModal() {
             this.$emit('close')
@@ -34,6 +36,21 @@ export default {
     border-radius: 10px;
     margin: 100px auto;
     background: #fff;
+}
+
+.modal .actions {
+    text-align: center;
+    margin: 30px 0 10px 0;
+    color: #333;
+}
+
+.modal .actions a {
+    padding: 8px;
+    color: #333;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin: 10px;
+    text-decoration: none;
 }
 
 .modal.sale {
